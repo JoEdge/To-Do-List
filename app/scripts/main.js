@@ -16,3 +16,21 @@ var totalItems=[];
 var item = new ToDo({
 
 });
+
+var milk= new ToDo({
+status: 'complete'
+});
+
+var listItem;
+
+$('button').on('click', function(event){
+	listItem= $('.input').val();
+	event.preventDefault;
+	console.log(listItem);
+	$('.toDoItems').append('<li>' + listItem +'</li>');
+
+// var rendered = Handlebars.templates['items'];
+
+// $('.toDoItems').append(rendered(listItem));
+// 	console.log(item);
+ });
