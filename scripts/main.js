@@ -17,20 +17,20 @@ var item = new ToDo({
 
 });
 
-var milk= new ToDo({
-status: 'complete'
-});
-
 var listItem;
 
 $('button').on('click', function(event){
-	listItem= $('.input').val();
 	event.preventDefault;
-	console.log(listItem);
-	$('.toDoItems').append('<li>' + listItem +'</li>');
 
+		listItem= $('.input').val() + '<button id="away">x</button>';
+
+    $('<li>' + listItem + '</li>').appendTo('.toDoItems')
+
+		$('ul').on('click', '#away' , function(away){
+				$(this).parent().remove()
+		});
+});
 // var rendered = Handlebars.templates['items'];
 
 // $('.toDoItems').append(rendered(listItem));
 // 	console.log(item);
- });
