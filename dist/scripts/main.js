@@ -1,3 +1,4 @@
+//To Do constructor
 var ToDo = function  (options) {
 	options= options || {};
 this.status=  options.status ||'incomplete';
@@ -18,7 +19,7 @@ var item = new ToDo({
 });
 
 var listItem;
-
+//add items and remove items
 $('button').on('click', function(event){
 	event.preventDefault;
 
@@ -29,7 +30,18 @@ $('button').on('click', function(event){
 		$('ul').on('click', '#away' , function(away){
 				$(this).parent().remove()
 		});
+
+		$('ul').on('click', 'li', function(finish){
+				$(this).css({background: 'green'})
+		});
+
+
+
 });
+
+
+
+
 // var rendered = Handlebars.templates['items'];
 
 // $('.toDoItems').append(rendered(listItem));
