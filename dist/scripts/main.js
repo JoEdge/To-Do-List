@@ -31,9 +31,10 @@ $('button').on('click', function(event){
 				$(this).parent().remove()
 		});
 
-		$('ul').on('click', 'li', function(finish){
-				$(this).css({background: 'green'})
-		});
+		$('ul').on('click', 'li', function(choose){
+				$(this).toggleClass('clicked');
+
+			});
 
 
 

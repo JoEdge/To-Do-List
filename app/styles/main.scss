@@ -13,5 +13,12 @@ body {
   margin: 50px auto;
   display: block;
   width: 500px;
+}
+.todoItems li {
+  list-style: none;
+  border: 1px solid black;
+}
 
+.clicked {
+background: green;
 }
