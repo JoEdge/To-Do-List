@@ -13,12 +13,34 @@ body {
   margin: 50px auto;
   display: block;
   width: 500px;
+
+  .input {
+    margin-left: 40px;
+  }
+
 }
-.todoItems li {
+
+.toDoItems {
   list-style: none;
-  border: 1px solid black;
+
+  li {
+    width: 200px;
+    min-height: 30px;
+    padding-left: 20px;
+    border: 1px solid black;
+    border-radius: 30px;
+    margin-top: 30px;
+    text-align: left;
+
+    #away {
+      float: right;
+      margin-right: 0.5px;
+      border-radius: 50px;
+    }
+  }
 }
 
 .clicked {
-background: green;
+background-color: green;
+color: white;
 }

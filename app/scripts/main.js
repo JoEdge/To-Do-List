@@ -1,44 +1,54 @@
 //To Do constructor
 var ToDo = function  (options) {
 	options= options || {};
-this.status=  options.status ||'incomplete';
-this.active=  true;
-this.delete= function(){
-this.active= false;
-};
-this.check= function(){
-	this.status='complete'
+	this.task= options.task;
+	this.status=  options.status ||'incomplete';
+	this.active=  true;
+	this.delete= function(){
+		this.active= false;
 	};
-this.count= 1;
-};
+	this.check= function(){
+		this.status='complete'
+	};
+	this.count= 1;
+	};
 
-var totalItems=[];
+//Set up templates
+  var todo_template = $("#todo_items").html();
+  var rendered = _.template(todo_template);
 
-var item = new ToDo({
+//All ToDos
+	var totalItems=[];
 
-});
 
-var listItem;
-//add items and remove items
-$('button').on('click', function(event){
-	event.preventDefault;
+	var listItem;
+//add items to list and clear input field
+	$('button').on('click', function(event){
+		event.preventDefault;
 
 		listItem= $('.input').val() + '<button id="away">x</button>';
 
-    $('<li>' + listItem + '</li>').appendTo('.toDoItems')
+	var item = new ToDo({
+			task: listItem
+	});
 
-		$('ul').on('click', '#away' , function(away){
+  //  $('.todoItems').append(rendered(item));
+
+    $('<li>' + listItem + '</li>').appendTo('.toDoItems');
+
+		$('.input').val("");
+
+});
+
+//remove items from list
+		$('ul').on('click', '#away' , function(){
 				$(this).parent().remove()
 		});
 
-		$('ul').on('click', 'li', function(choose){
+//change background color of list item
+		$('ul').on('click', 'li', function(){
 				$(this).toggleClass('clicked');
-
-			});
-
-
-
-});
+		});
 
 
 
