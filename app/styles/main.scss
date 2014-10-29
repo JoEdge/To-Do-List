@@ -1,59 +1,61 @@
-// Bourbon & Neat
-@import '../../bower_components/bourbon/dist/bourbon';
-@import '../../bower_components/neat/app/assets/stylesheets/neat';
-
-// Custom Styles
 body {
-  background: #fafafa;
+  background: HSLA(0, 0%, 65%, .5);
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #333;
 }
+.body{
+  display: block;
+  width: 350px;
+  margin: 0 auto;
+}
 
-.completed {
-  background-color: green;
-  color: white;
+.input{
+  border-radius: 5px;
+  border: none;
+  background-color: HSLA(0, 0%, 65%, 0.7);
+  position: relative;
+  padding-top: 15px;
+  padding-bottom: 0px;
+}
+#button{
+  border-radius: 100%;
+  width: 50px;
+  height: 50px;
+  border: none;
+  background-color: HSLA(166, 97%, 37%, 0.4);
+  position: absolute;
+  top: 105px;
+  right: 574px;
+}
+li{
+  list-style-type: none;
+  background-color: HSLA(166, 97%, 37%, .5);
+  margin-top: 10px;
+  border-radius: 15px;
+}
+.newItem{
+ width: 100%;
+  height: 30px;
+  padding-top: 6px;
+  padding-left: 10px;
+  margin-left: -86px;
 }
 
 .box{
+ float: left;
   display: block;
-  width: 400px;
-  margin: 50px auto;
-
-  h2 {
-    padding-left: 85px;
-  }
-
-  .input {
-    margin-left: 40px;
-  }
+  width: 300px;
+  margin: 50px;
 
 }
-
-.toDoItems {
-  list-style: none;
-
-  li {
-    width: 200px;
-    min-height: 30px;
-    padding-left: 20px;
-    border: 1px solid black;
-    border-radius: 30px;
-    margin-top: 30px;
-    text-align: left;
-
-    #away {
-      float: right;
-      margin-right: 0.5px;
-      border-radius: 50px;
-    }
-  }
+.completed{
+  background-color: HSLA(57, 65%, 53%, 1);
 }
 
-.box2 {
-  display: block;
-  width: 400px;
-  min-height: 10px;
-  border: 1px solid black;
-  margin: 50px auto;
-
+.count{
+position: absolute;
+top: 50px;
+left: 282px;
+padding: 0;
+margin-right: 0;
 }
