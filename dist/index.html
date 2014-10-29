@@ -16,13 +16,18 @@
   <body>
 
     <div class="box">
-      <input class="input">
+      <h2>My To Do List:</h2>
+        <input class="input">
     </input>
-      <button>add</button>
+        <button>Add Task</button>
+          <ul class="toDoItems">
+          </ul>
+    </div>
 
-      <ul class="toDoItems">
+    <div class="box2">
+      <ul class="counter">
       </ul>
-</div>
+    </div>
 
     <script type="text/template" id="todo_items">
         <li><%= task %></li>

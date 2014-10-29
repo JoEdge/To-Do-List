@@ -9,10 +9,19 @@ body {
   color: #333;
 }
 
+.clicked {
+  background-color: green;
+  color: white;
+}
+
 .box{
-  margin: 50px auto;
   display: block;
-  width: 500px;
+  width: 400px;
+  margin: 50px auto;
+
+  h2 {
+    padding-left: 85px;
+  }
 
   .input {
     margin-left: 40px;
@@ -40,7 +49,11 @@ body {
   }
 }
 
-.clicked {
-background-color: green;
-color: white;
+.box2 {
+  display: block;
+  width: 400px;
+  min-height: 10px;
+  border: 1px solid black;
+  margin: 50px auto;
+
 }
