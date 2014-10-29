@@ -1,59 +1,78 @@
-//To Do constructor
-var ToDo = function  (options) {
-	options= options || {};
-	this.task= options.task;
-	this.status=  options.status ||'incomplete';
-	this.active=  true;
-	this.delete= function(){
-		this.active= false;
-	};
-	this.check= function(){
-		this.status='complete'
-	};
-	this.count= 1;
-	};
+var my_server= 'http://tiy-atl-fe-server.herokuapp.com/collections/chelseaandjoanna';
 
-//Set up templates
-  var todo_template = $("#todo_items").html();
-  var rendered = _.template(todo_template);
+var ToDo= function (options) {
+	options= options||{};
+	this.done= 'false';
+	this.task=options.task || '';
+	this.count = 1;
 
-//All ToDos
-	var totalItems=[];
+};
 
+var todo_list;
 
-	var listItem;
-//add items to list and clear input field
-	$('button').on('click', function(event){
-		event.preventDefault;
+var task_template= $('#task_items').html();
+var rendered = _.template(task_template);
 
-		listItem= $('.input').val() + '<button id="away">x</button>';
+$.getJSON(my_server).done( function(data){
 
-	var item = new ToDo({
-			task: listItem
+	todo_list = data;
+
+	_.each(todo_list, function(item){
+		$('todoitems').append(rendered(item));
 	});
-
-  //  $('.todoItems').append(rendered(item));
-
-    $('<li>' + listItem + '</li>').appendTo('.toDoItems');
-
-		$('.input').val("");
-
 });
 
-//remove items from list
-		$('ul').on('click', '#away' , function(){
-				$(this).parent().remove()
-		});
+var task, contents;
 
-//change background color of list item
-		$('ul').on('click', 'li', function(){
-				$(this).toggleClass('clicked');
-		});
+$('#button').on('click', function(event){
+event.preventDefault();
+var self=this;
+contents = $('.input').val();
+
+task= new ToDo({
+	task: contents
+});
+console.log(task);
+
+$.ajax({
+	type: 'POST',
+	url: my_server,
+	data: task
+}).done( function(data){
+
+	todo_list.push(data);
+
+	$('.toDoItems').append(rendered(data));
+
+	$('.input').val('');
+});
+});
 
 
 
+var todo_modifier;
+$('.toDoItems').on('click', 'li', function(event){
+	event.preventDefault();
 
-// var rendered = Handlebars.templates['items'];
+var myID= $(this).attr('id');
 
-// $('.toDoItems').append(rendered(listItem));
-// 	console.log(item);
+todo_modifier=_.findWhere(todo_list, {_id: myID});
+
+	if(todo_modifier.done ==='true'){
+		todo_modifier.done = 'false';
+		$(this).removeClass('completed');
+	}else{
+		todo_modifier.done ='true';
+
+		$(this).addClass('completed');
+	}
+	console.log(todo_modifier);
+
+
+$.ajax({
+	type: 'PUT',
+	url: my_server + "/" + todo_modifier._id,
+	data:todo_modifier
+});
+
+});

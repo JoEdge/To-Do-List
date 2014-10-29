@@ -15,22 +15,29 @@
   </head>
   <body>
 
+<div class="body">
     <div class="box">
-      <h2>My To Do List:</h2>
+        <h1>Get Shit Done.</h1>
         <input class="input">
-    </input>
-        <button>Add Task</button>
-          <ul class="toDoItems">
-          </ul>
+        </input>
+             <button id="button">add</button>
+
+        <ul class="toDoItems">
+        </ul>
+
     </div>
 
-    <div class="box2">
-      <ul class="counter">
-      </ul>
-    </div>
-
-    <script type="text/template" id="todo_items">
-        <li><%= task %></li>
+    <div class="count">
+        </div>
+    <div class="done"></div>
+    <div class="notdone"></div>
+</div>
+<script type="text/template" id="task_items">
+      <% if(done == 'true') { %>
+        <li id="<%= _id %>" class="completed"><%= task %></li>
+      <% } else { %>
+        <li id="<%= _id %>" ><%= task %></li>
+      <% } %>
     </script>
     <script src="scripts/vendor.js"></script>
 
