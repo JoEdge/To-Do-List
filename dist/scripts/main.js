@@ -52,8 +52,6 @@ $('#button').on('click', function(event){
 			all.push(task.count);
 			$('.total').html(all.length);
 
-		//	var q =$('.toDoItems li').length;
-		//$('.total').html(q);
 		});
 
 });
@@ -69,9 +67,6 @@ todo_modifier=_.findWhere(todo_list, {_id: myID});
 	if(todo_modifier.done ==='true'){
 		todo_modifier.done = 'false';
 		$(this).removeClass('completed');
-
-		//var w= $('.toDoList .done').length-0;
-		//	$('.finished').html(w);
 	}
 	else{
 		todo_modifier.done ='true';
@@ -94,12 +89,12 @@ todo_modifier=_.findWhere(todo_list, {_id: myID});
 				url: my_server + "/" + todo_modifier._id,
 			});
 
-$.ajax({
-	type: 'PUT',
-	url: my_server + "/" + todo_modifier._id,
-	data: todo_modifier,
-});
+			$.ajax({
+				type: 'PUT',
+				url: my_server + "/" + todo_modifier._id,
+				data: todo_modifier,
+			});
 
-});
+	});
 
 });
