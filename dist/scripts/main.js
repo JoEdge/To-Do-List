@@ -1,4 +1,4 @@
-var my_server= 'http://tiy-atl-fe-server.herokuapp.com/collections/chelseaandjoanna2';
+var my_server= 'http://tiy-atl-fe-server.herokuapp.com/collections/chelseaandjoanna3';
 
 var ToDo= function (options) {
 	options= options||{};
