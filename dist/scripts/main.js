@@ -4,10 +4,12 @@ var ToDo= function (options) {
 	options= options||{};
 	this.done= 'false';
 	this.task= options.task || '';
+	this.count= 1
 
 };
 
 var all=[];
+var checked=[];
 var todo_list;
 var task_template= $('#task_items').html();
 var rendered = _.template(task_template);
@@ -47,24 +49,14 @@ $('#button').on('click', function(event){
 
 		  $('.input').val('');
 
-			var q =$('.toDoItems li').length;
-				$('.total').html(q);
+			all.push(task.count);
+			$('.total').html(all.length);
+
+		//	var q =$('.toDoItems li').length;
+		//$('.total').html(q);
 
 		});
 
-});
-
-
-$('ul').on('click', '#away', function(){
-	$(this).parent().remove();
-
-	var q = $('.toDoItems li').length - 0;
-		$('.total').html(q);
-
-		$.ajax({
-			type: 'DELETE',
-			url: my_server + "/" + todo_modifier._id,
-		});
 });
 
 
@@ -80,16 +72,35 @@ todo_modifier=_.findWhere(todo_list, {_id: myID});
 		todo_modifier.done = 'false';
 		$(this).removeClass('completed');
 
-		var w=$('.toDoList .done').length-0;
-			$('.finished').html(w);
+		//var w= $('.toDoList .done').length-0;
+		//	$('.finished').html(w);
 	}
 	else{
 		todo_modifier.done ='true';
-
 		$(this).addClass('completed');
+
+		checked.push('.toDoList.done');
+		$('.finished').html(checked.length);
 	}
 	console.log(todo_modifier);
 
+	$('ul').on('click', '#away', function(){
+		$(this).parent().remove();
+
+		$('.total').html(all.length-1);
+		//var q = $('.toDoItems li').length - 0;
+			//$('.total').html(q);
+
+		$.ajax({
+			url: my_server + "/" + todo_modifier._id,
+			type: 'DELETE',
+		});
+
+			//$.ajax({
+			//	type: 'DELETE',
+			//	url: my_server + "/" + todo_modifier._id,
+			//});
+	});
 
 $.ajax({
 	type: 'PUT',
