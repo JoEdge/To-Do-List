@@ -54,11 +54,9 @@ $('#button').on('click', function(event){
 
 		//	var q =$('.toDoItems li').length;
 		//$('.total').html(q);
-
 		});
 
 });
-
 
 var todo_modifier;
 $('.toDoItems').on('click', 'li', function(event){
@@ -91,16 +89,10 @@ todo_modifier=_.findWhere(todo_list, {_id: myID});
 		//var q = $('.toDoItems li').length - 0;
 			//$('.total').html(q);
 
-		$.ajax({
-			url: my_server + "/" + todo_modifier._id,
-			type: 'DELETE',
-		});
-
-			//$.ajax({
-			//	type: 'DELETE',
-			//	url: my_server + "/" + todo_modifier._id,
-			//});
-	});
+			$.ajax({
+				type: 'DELETE',
+				url: my_server + "/" + todo_modifier._id,
+			});
 
 $.ajax({
 	type: 'PUT',
@@ -108,5 +100,6 @@ $.ajax({
 	data: todo_modifier,
 });
 
+});
 
 });
