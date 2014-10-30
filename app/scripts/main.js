@@ -35,7 +35,6 @@ $('#button').on('click', function(event){
 	task= new ToDo({
 		task: contents
 		});
-	console.log(task);
 
 	$.ajax({
 		type: 'POST',
@@ -50,7 +49,7 @@ $('#button').on('click', function(event){
 		  $('.input').val('');
 
 			all.push(task.count);
-			$('.total').html(all.length);
+			$('.total').html('Total:' + all.length);
 
 		});
 
@@ -73,14 +72,14 @@ todo_modifier=_.findWhere(todo_list, {_id: myID});
 		$(this).addClass('completed');
 
 		checked.push('.toDoList.done');
-		$('.finished').html(checked.length);
+		$('.finished').html('Finished:' + checked.length);
 	}
 	console.log(todo_modifier);
 
 	$('ul').on('click', '#away', function(){
 		$(this).parent().remove();
 
-		$('.total').html(all.length-1);
+		$('.total').html('Total:' + all.length-1);
 		//var q = $('.toDoItems li').length - 0;
 			//$('.total').html(q);
 
